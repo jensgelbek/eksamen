@@ -44,7 +44,6 @@ public class DogFacade {
                return new DogDTO(dog);       
         }catch(Exception e){
             
-            System.out.println("exception -----------------------------");
             throw new WebApplicationException("could not create dog",400);
         }
         finally{
@@ -52,6 +51,49 @@ public class DogFacade {
             
         }
               
+    }
+     public DogDTO edit(DogDTO dogDTO)throws WebApplicationException{
+        EntityManager em=emf.createEntityManager();
+        Dog newdog=dogDTO.getDog();
+        try{
+            em.getTransaction().begin();
+            Dog originalDog=em.find(Dog.class, newdog.getId());
+           
+            Owner newowner=em.find(Owner.class, dogDTO.getOwnerId());
+            Owner originalOwner=originalDog.getOwner();
+            if(newowner.getId()!=originalOwner.getId()){
+                originalOwner.getDogs().remove(originalDog);
+                newowner.addDog(originalDog);
+            }
+           originalDog.setName(newdog.getName());
+           originalDog.setBreed(newdog.getBreed());
+           originalDog.setBirthDate(newdog.getBirthDate());
+           originalDog.setGender(newdog.getGender());
+           originalDog.setImage(newdog.getImage());    
+            em.getTransaction().commit();
+               return new DogDTO(originalDog);       
+        }catch(Exception e){
+            
+            throw new WebApplicationException("could not create dog",400);
+        }
+        finally{
+            em.close();
+            
+        }
+              
+    }
+    
+    
+    public DogDTO get(Long id){
+                EntityManager em=emf.createEntityManager();
+                Dog dog;   
+                try {
+                      dog= em.find(Dog.class, id);
+                   }
+                finally{
+                    em.close();
+                }
+                return new DogDTO(dog);
     }
     
     public List<DogDTO> getAll(){

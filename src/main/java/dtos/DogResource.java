@@ -48,7 +48,8 @@ public class DogResource extends Provider{
      */
     public DogResource() {
     }
-    @Path("/add")
+    
+@Path("/add")
     @RolesAllowed("admin")
     @POST
     public Response addDog(String jsonBody) {
@@ -60,9 +61,24 @@ public class DogResource extends Provider{
 
         return Response.ok(GSON.toJson(returnedDogDTO)).build();
     }
+    
+    @Path("/edit")
+    @RolesAllowed("admin")
+    @PUT
+    public Response editDog(String jsonBody) {
+        DogDTO returnedDogDTO;
 
+        
+                
+        DogDTO dogDTO = GSON.fromJson(jsonBody, DogDTO.class);
+System.out.println(dogDTO+"----------------------");
+        returnedDogDTO = Facade.edit(dogDTO);
+
+        return Response.ok(GSON.toJson(returnedDogDTO)).build();
+    }
+    
     @Path("/all")
-    //@RolesAllowed({"user","admin"})
+    @RolesAllowed({"user","admin"})
     @GET
     public Response getAll(){
         List<DogDTO> dogdtos=Facade.getAll();
@@ -70,11 +86,20 @@ public class DogResource extends Provider{
         
     }
     @Path("/{id}")
+    @RolesAllowed("admin")
     @DELETE
     public Response delete(@PathParam("id") int id) {
         Facade.delete(new Long(id));
         return Response.ok(GSON.toJson(id)).build();
 
     } 
-    
+   
+    @Path("/{id}")
+    @RolesAllowed("admin")
+    @GET
+    public Response get(@PathParam("id") int id) {
+        DogDTO dogDTO=Facade.get(new Long(id));
+        return Response.ok(GSON.toJson(dogDTO)).build();
+
+    } 
 }
