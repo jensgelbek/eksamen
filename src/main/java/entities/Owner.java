@@ -37,12 +37,12 @@ public class Owner implements Serializable {
     public Owner() {
     }
 
-    public Owner(String name, String address1, String address2, String phone, List<Dog> dogs) {
+    public Owner(String name, String address1, String address2, String phone) {
         this.name = name;
         this.address1 = address1;
         this.address2 = address2;
         this.phone = phone;
-        this.dogs = dogs;
+       
     }
 
     public Long getId() {

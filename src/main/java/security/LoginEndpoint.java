@@ -42,16 +42,7 @@ public class LoginEndpoint {
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
     public static final UserFacade USER_FACADE = UserFacade.getUserFacade(EMF);
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/generate")
-    public String generateUsers() {
-       boolean isGenerated = SetupTestUsers.generateUsers();
-       if (!isGenerated) {
-           throw new WebApplicationException("Failed generation", 500);
-       }
-       return "{\"msg\": \"Yay it worked\"}";
-    }
+  
 
      @GET
     @Produces(MediaType.APPLICATION_JSON)
