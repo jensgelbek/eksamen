@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
@@ -42,7 +43,7 @@ public class Owner implements Serializable {
         this.address1 = address1;
         this.address2 = address2;
         this.phone = phone;
-       
+        this.dogs=new ArrayList<>();
     }
 
     public Long getId() {
@@ -89,8 +90,11 @@ public class Owner implements Serializable {
         return dogs;
     }
 
-    public void setDogs(List<Dog> dogs) {
-        this.dogs = dogs;
+    public void addDog(Dog dog) {
+        if(dog!=null){
+        this.dogs.add(dog);
+        dog.setOwner(this);
+        }
     }
 
     @Override

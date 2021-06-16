@@ -20,7 +20,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(dtos.SetupResource.class);
+        resources.add(dtos.DogResource.class);
         resources.add(dtos.user.UserResource.class);
         resources.add(org.glassfish.jersey.server.wadl.internal.WadlResource.class);
         resources.add(rest.DemoResource.class);
@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
         resources.add(security.RolesAllowedFilter.class);
         resources.add(security.errorhandling.AuthenticationExceptionMapper.class);
         resources.add(security.errorhandling.NotAuthorizedExceptionMapper.class);
+        resources.add(utils.SetupResource.class);
         resources.add(utils.cors.CorsRequestFilter.class);
         resources.add(utils.cors.CorsResponseFilter.class);
         resources.add(utils.errorhandling.API_ExceptionMapper.class);

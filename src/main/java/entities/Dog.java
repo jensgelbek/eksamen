@@ -99,11 +99,12 @@ public class Dog implements Serializable {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
+             
     }
 
     @Override
     public String toString() {
-        return "Dog{" + "id=" + id + ", name=" + name + ", breed=" + breed + ", image=" + image + ", gender=" + gender + ", birthDate=" + birthDate + ", ownername=" + owner.getName() + '}';
+        return "Dog{" + "id=" + id + ", name=" + name + ", breed=" + breed + ", image=" + image + ", gender=" + gender + ", birthDate=" + birthDate  + '}';
     }
 
    
