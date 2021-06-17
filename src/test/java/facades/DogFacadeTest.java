@@ -32,7 +32,7 @@ public class DogFacadeTest {
    
     
     Gson gson = new Gson();
-    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
+    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactoryForTest();
     private static final DogFacade Facade = DogFacade.getInstance(EMF);
     private static Dog d1,d2,d3;
     private static Owner o1,o2;
