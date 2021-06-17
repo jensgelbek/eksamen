@@ -71,7 +71,6 @@ public class DogResource extends Provider{
         
                 
         DogDTO dogDTO = GSON.fromJson(jsonBody, DogDTO.class);
-System.out.println(dogDTO+"----------------------");
         returnedDogDTO = Facade.edit(dogDTO);
 
         return Response.ok(GSON.toJson(returnedDogDTO)).build();

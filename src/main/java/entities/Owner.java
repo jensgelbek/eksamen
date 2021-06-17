@@ -32,7 +32,7 @@ public class Owner implements Serializable {
     private String address2;
     private String phone;
     
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     List<Dog> dogs;
 
     public Owner() {
