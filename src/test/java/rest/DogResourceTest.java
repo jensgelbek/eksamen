@@ -145,6 +145,7 @@ public class DogResourceTest {
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode());
     }
+    
     @Test
     public void testGetAll() throws Exception {
         List<DogDTO> foundDogs;

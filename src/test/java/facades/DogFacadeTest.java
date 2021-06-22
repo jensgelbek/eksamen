@@ -84,7 +84,8 @@ public class DogFacadeTest {
     @Test
     public void testEdit() {
         EntityManager em = EMF.createEntityManager();
-        DogDTO expected = new DogDTO(d1);expected.setName("evil");
+        DogDTO expected = new DogDTO(d1);
+        expected.setName("evil");
         Facade.edit(expected);
         Dog actual = em.find(Dog.class,d1.getId());
         

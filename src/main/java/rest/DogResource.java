@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dtos;
+package rest;
 
 import com.google.gson.Gson;
+import dtos.DogDTO;
 import facades.DogFacade;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;

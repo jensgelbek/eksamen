@@ -20,10 +20,11 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(dtos.DogResource.class);
         resources.add(dtos.user.UserResource.class);
         resources.add(org.glassfish.jersey.server.wadl.internal.WadlResource.class);
         resources.add(rest.DemoResource.class);
+        resources.add(rest.DogResource.class);
+        resources.add(rest.OwnerResource.class);
         resources.add(rest.RenameMeResource.class);
         resources.add(security.JWTAuthenticationFilter.class);
         resources.add(security.LoginEndpoint.class);
